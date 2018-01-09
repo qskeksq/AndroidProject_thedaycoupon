@@ -1,0 +1,15 @@
+/build
+
+app-release.apk
+fabric.properties
+google-services.json
+
+/src/main/res/drawable-xxhdpi
+/src/main/res/mipmap-xxxhdpi
+/src/main/res/values
+/src/main/java/com/thedaycoupon/todo_list
+
+#*/drawable-xxhdpi/
+#/main/res/mipmap-xxxhdpi
+#/main/res/values
+#/main/java/com.thedaycoupon/todo_list

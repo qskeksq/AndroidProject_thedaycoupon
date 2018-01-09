@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:background="@color/color_back_request"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="0dp"
+    android:layout_marginRight="0dp"
+    android:layout_marginTop="1dp"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/linearLayout13"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <EditText
+        android:background="@drawable/plain_back"
+        android:ems="10"
+        android:id="@+id/itemInputInfoDetail"
+        android:inputType="textMultiLine|textPersonName"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="6"
+        android:layout_width="0dp"
+        android:paddingBottom="4dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="4dp"
+        android:paddingTop="4dp"
+        android:textSize="14sp" />
+
+    <ImageView
+        android:id="@+id/itemAddViewImg"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="4dp"
+        android:layout_width="wrap_content"
+        app:srcCompat="@drawable/add" />
+
+</LinearLayout>

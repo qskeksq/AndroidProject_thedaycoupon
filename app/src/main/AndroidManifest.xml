@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.thedaycoupon">
+
+    <!-- 맵, 인터넷 상태, 통신 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 위치 정보 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- 네트워크 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    <application
+        android:name=".activity.GlobalApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/icon_launcher"
+        android:label="그날쿠폰"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <uses-library android:name="com.google.android.maps" />
+
+        <!-- 구글 맵뷰 -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_map_api_key" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <!-- 카카오 로그인 -->
+        <meta-data
+            android:name="com.kakao.sdk.AppKey"
+            android:value="@string/kakao_app_key" />
+
+        <!-- 페이스북 로그인 -->
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="b6794813b0e6e9bb2bbeeeabe7cd25a8407e8c7e" />
+
+        <activity
+            android:name=".activity.LauncherActivity"
+            android:theme="@style/AppTheme2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.MainActivity" />
+        <activity
+            android:name=".activity.IntroductionActivity"
+            android:theme="@style/AppTheme2" />
+        <activity android:name=".activity.DetailActivity" />
+        <activity android:name=".activity.MyDDayActivity" />
+        <activity
+            android:name=".activity.RequestCouponActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".activity.FavoriteActivity" />
+        <activity android:name=".activity.SignInActivity" />
+        <activity android:name=".activity.SignUpActivity" />
+        <activity android:name=".activity.ProfileActivity" />
+        <activity android:name=".activity.WrongInfoActivity" />
+        <activity android:name=".activity.FindPlaceActivity" />
+        <activity android:name=".activity.DetailImageActivity" />
+        <activity android:name=".activity.LocationActivity"></activity>
+
+    </application>
+
+</manifest>
