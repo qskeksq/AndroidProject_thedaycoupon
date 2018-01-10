@@ -83,6 +83,7 @@
         - versionCode
         - versionName
     - signingConfigs
+        - debuggable : false
         - storeFile
         - storePassword
         - keyAlias
@@ -2286,3 +2287,70 @@
     - strings
 
     - secrets : API 키 값들을 모아놓음
+
+
+## __3. 배포__ :open_file_folder:
+
+### (1) 어플리케이션 체크사항
+
+- [앱 설정 확인](https://developer.android.com/studio/publish/versioning.html?hl=ko)
+    - applicationId : 패키지명
+    - versionName : 사용자에게 보여줄 버전
+    - versionCode : 개발자 관리 버전
+    - minSdkVersion : 이 버전 아래로는 앱을 설치할 수 없음
+    - targetSdkVersion : 현재 앱의 개발 SDK 버전
+    - 타겟 SDK 버전
+
+- 로그 정리
+    - [참고](http://gun0912.tistory.com/12)
+- 불필요한 파일 정리
+    - jni/ : NDK관련 소스 (c, cpp, h, mk 파일등)
+    - lib/ : 라이브러리 파일 (so, jar 파일등). 테스트 용도로 쓰고 릴리즈에는 필요없는 라이브러리 파일도 삭제
+    - src/ : 소스코드 파일 (.java, .aidl 등). 어떤 jar 파일도 있으면 안됨
+    - res/, asset/s, res/raw/ : 불필요한 파일은 삭제 
+    - [참고](http://blog.daum.net/andro_java/665)
+- 난독화 & 최적화
+    - 적용
+        - minifyEnabled true
+        - proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    - 규칙
+        - dontoptimize # 최적화 하지 않기
+        - dontshrink # 사용하지 않는 메소드 유지
+        - keep class com.example.classname # ClassNotFoundException에러나 난독화를 진행하지 않고 유지하는 옵션
+        - keepclassmembers class com.example.classname { 접근제어자 *; } # 특정 클래스의 맴버 원상태 유지
+        - keepattributes InnerClasses # 내부클래스 원상태 유지 적용
+    - [참고](https://www.guardsquare.com/en/proguard/manual/usage)
+
+
+출처: http://dwfox.tistory.com/18 [DWFOX]
+- 써드파티 라이브러리 및 서비스들의 아이디와 설정 확인 : 개발할 때는 디버그 인증, 키를 사용하기 때문에 릴리즈 할 때 릴리즈용으로 바꿔줘야 함
+- 암호화 키(appkey.jks) 관리
+- 테스팅
+    - 에뮬레이터
+    - 베타테스터
+
+### (2) 정책 체크사항
+
+- [구글 플레이 스토어 정책 확인](https://support.google.com/googleplay/android-developer/answer/4430948?hl=ko) : 안드로이드의 경우 사전 검수가 없기 때문에 미리 체크해야 한다
+- [체크리스트](https://developer.android.com/distribute/best-practices/launch/launch-checklist.html?hl=ko)
+- [현지화](https://developer.android.com/distribute/best-practices/launch/localization-checklist.html?hl=ko) 
+- [개인정보처리방침](https://support.google.com/googleplay/android-developer/answer/113469?hl=ko#privacy)
+- EULA(최종 사용자 계약서)
+    - [참고](https://home.mcafee.com/downloads/freescan.aspx?affid=105&culture=ko-kr&ctst=1)
+
+
+### (3) 스토어 배포 준비사항
+ 
+- 앱 상세
+    - 제목 : 제목도 가이드라인 따라야 함.
+    - 설명 : 설계 단계에서 한 번, 배포에서 한 번 
+- [앱 이미지 준비](https://support.google.com/googleplay/android-developer/answer/1078870)
+    - 앱 아이콘 : 512x512px 아이콘으로 MDPI에서 48x48px, HDPI에서 72x72px, XHDPI에서 96x96px
+    - 스크린샷 : 사용자들은 설명을 거의 읽지 않음
+    - 그래픽 이미지 : 무조건 1024*500 이어야함
+- [APK 사이즈 확인](https://developer.android.com/google/play/expansion-files.html?hl=ko)
+- 베타테스트
+
+#### 참고
+    - http://www.androidside.com/bbs/board.php?bo_table=B56&wr_id=32478
+    - http://wingsnote.com/84
